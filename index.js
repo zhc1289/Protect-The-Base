@@ -24,5 +24,20 @@ function move(e) {
     heroId.style.top = (hero.vertical()) + "px";
     heroId.style.left = (hero.horizontal()) + "px";
 }
+function creepMove() {
+    creepId = document.getElementById('creep'),
+    baseId = document.getElementById('base'),
+    creep = {
+        vertical: function() {
+            var y = parseInt(getComputedStyle(creepId).top);
+            if (y < parseInt(getComputedStyle(baseId).top)) {
+                y += 4;
+            }
+            return y
+        }
+    };
+    creepId.style.top = (creep.vertical()) + "px";
+}
 
 document.addEventListener('keydown', move);
+setInterval(creepMove, 100)
