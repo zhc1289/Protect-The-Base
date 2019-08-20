@@ -12,6 +12,12 @@
 
 #base {
     position: absolute;
-    left: 550px;
+    left: 500px;
     top: 520px;
+}
+
+#health {
+    position: absolute;
+    left: 500px;
+    top: 540px;
 }

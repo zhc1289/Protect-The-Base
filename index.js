@@ -1,4 +1,4 @@
-function move(e) {
+function heroMove(e) {
     var key = e.keyCode,
     heroId = document.getElementById('hero'),
     hero = {
@@ -27,17 +27,42 @@ function move(e) {
 function creepMove() {
     creepId = document.getElementById('creep'),
     baseId = document.getElementById('base'),
+    baseY = parseInt(getComputedStyle(baseId).top),
     creep = {
         vertical: function() {
             var y = parseInt(getComputedStyle(creepId).top);
-            if (y < parseInt(getComputedStyle(baseId).top)) {
+            if (y < baseY) {
                 y += 4;
+            } else {
+                baseId.innerHTML = "BASE UNDER ATTACK"
+                clearInterval(creepAdvancing)
+                creepSiege = setInterval(creepAttack, 500)
             }
             return y
-        }
+        },
     };
     creepId.style.top = (creep.vertical()) + "px";
 }
 
-document.addEventListener('keydown', move);
-setInterval(creepMove, 100)
+function creepAttack() {
+    creepId = document.getElementById('creep'),
+    baseId = document.getElementById('base'),
+    baseY = parseInt(getComputedStyle(baseId).top),
+    creepY = parseInt(getComputedStyle(creepId)),
+    baseHealth = document.getElementById("health"),
+    creep = {
+        attackBase: function() {
+            baseHealth.innerHTML --;
+            return baseHealth.innerHTML
+        }
+    }
+    baseHealth.innerHTML = creep.attackBase()
+    if (baseHealth.innerHTML < 1) {
+        clearInterval(creepSiege);
+        baseId.innerHTML = "BASE DESTROYED";
+        baseHealth.innerHTML = "GAME OVER";
+    }
+}
+
+document.addEventListener('keydown', heroMove);
+creepAdvancing = setInterval(creepMove, 100);
