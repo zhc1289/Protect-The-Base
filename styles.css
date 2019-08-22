@@ -8,10 +8,20 @@
     top: 400px;
 }
 
-#creep {
+#creepBox {
     position: absolute;
-    left: 380px;
+    left: 300px;
     top: 0px;
+}
+
+#creep {
+    position: relative;
+}
+
+#creepHp {
+    top: 18px;
+    position: relative;
+    visibility: hidden;
 }
 
 #base {
