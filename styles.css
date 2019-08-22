@@ -1,5 +1,9 @@
+#disable_scroll {
+    overflow: hidden;
+}
+
 #hero {
-    position: absolute;
+    position: relative;
     left: 420px;
     top: 400px;
 }
@@ -12,12 +16,12 @@
 
 #base {
     position: absolute;
-    left: 500px;
-    top: 520px;
+    left: 430px;
+    top: 550px;
 }
 
 #health {
     position: absolute;
-    left: 500px;
-    top: 540px;
+    left: 450px;
+    top: 570px;
 }

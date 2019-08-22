@@ -5,8 +5,14 @@ function heroMove(e) {
         vertical: function() {
             var y = parseInt(getComputedStyle(heroId).top);
             if (key == 38) {
+                if (y < 0) {
+                    y = 0
+                }
                 y -= 4;
             } else if (key == 40) {
+                if (y > 520) {
+                    y = 520
+                }
                 y += 4;
             }
             return y
@@ -14,8 +20,14 @@ function heroMove(e) {
         horizontal: function() {
             var x = parseInt(getComputedStyle(heroId).left);
             if (key == 37) {
+                if (x < 0) {
+                    x = 0
+                }
                 x -= 4;
             } else if (key == 39) {
+                if (x > 555) {
+                    x = 555
+                }
                 x += 4;
             }
             return x
