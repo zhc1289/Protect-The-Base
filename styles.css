@@ -3,7 +3,7 @@
 }
 
 #hero {
-    position: relative;
+    position: absolute;
     left: 420px;
     top: 400px;
 }
