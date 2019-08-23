@@ -18,6 +18,17 @@
     position: relative;
 }
 
+#creepHpBar {
+    position: absolute;
+    left: -15px;
+    top: 25px;
+    width: 30px;
+    height: 4px;
+    border-color: white;
+    border-width: 1px;
+    background-color: green;
+}
+
 #creepHp {
     top: 18px;
     position: relative;

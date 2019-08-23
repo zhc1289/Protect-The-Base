@@ -41,17 +41,36 @@ function heroAttack(e) {
     var key = e.keyCode
     heroId = document.getElementById('hero')
     creepId = document.getElementById('creep')
+    creepHpBar = document.getElementById('creepHpBar')
+    if (typeof(creepMaxHp) == 'undefined') {
+        creepMaxHp = getCreepMaxHp()
+    }
+    currentCreepHp = creepHp.innerHTML
+    creepMaxHp = parseInt(creepMaxHp)
+
     dx = Math.abs(parseInt(getComputedStyle(creepBoxId).left) - parseInt(getComputedStyle(heroId).left))
     dy = Math.abs(Math.abs(parseInt(getComputedStyle(creepBoxId).top) - parseInt(getComputedStyle(heroId).top)) - 38)
+    
+    if ((creepHp.innerHTML < 13) && ((getComputedStyle(creepHp).visibility) == 'hidden')) {
+        creepHp.style.visibility = "visible"
+    }   
 
     if (key == 32) {
         if ((dx < 9) && (dy <9)) {
             creepHp.innerHTML --
+            creepHpBar.style.width = currentCreepHp/creepMaxHp * 30 + "px"
+        }
+        if (creepHp.innerHTML == 1) {
+            creepHp.innerHTML --
+            clearInterval(creepAdvancing);
+            clearInterval(creepSiege);
+            clearInterval(baseRetaliate);
+            creepHp.style.visibility = "hidden"
+            creepId.innerHTML = ""
+            console.log("LAST HIT!")
         }
         if (creepHp.innerHTML < 1) {
-            clearInterval(creepAdvancing)
-            creepHp.innerHTML = ""
-            creepId.innerHTML = ""
+            creepHp.innerHTML = "";
         }
     }
 }
@@ -100,20 +119,31 @@ function baseAttack() {
     creepHp = document.getElementById('creepHp'),
     base = {
         attackCreep: function() {
-            if ((creepHp.innerHTML < 5) && ((getComputedStyle(creepHp).visibility) == 'hidden')) {
+            if ((creepHp.innerHTML < 13) && ((getComputedStyle(creepHp).visibility) == 'hidden')) {
                 creepHp.style.visibility = "visible"
-            }   
+            }
             creepHp.innerHTML --;
             return creepHp.innerHTML
         }
     }
     creepHp.innerHTML = base.attackCreep()
-    if (creepHp.innerHTML < 1) {
+    if (creepHp.innerHTML == 1) {
+        creepHp.innerHTML --
+        clearInterval(creepSiege);
         clearInterval(baseRetaliate);
-        clearInterval(creepSiege)
-        creepHp.innerHTML = ""
-        creepId.innerHTML = ""
+        
+        if (creepHp.innerHTML < 1) {
+            creepHp.innerHTML = "";
+        }
+        
+        creepId.innerHTML = "";
+        console.log("Missed Last Hit")
     }
+}
+
+function getCreepMaxHp() {
+    creepMaxHp = document.getElementById('creepHp').innerHTML
+    return creepMaxHp
 }
 
 document.addEventListener('keydown', heroAttack);
