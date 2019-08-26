@@ -117,12 +117,17 @@ function creepAttack() {
 function baseAttack() {
     creepId = document.getElementById('creep'),
     creepHp = document.getElementById('creepHp'),
+    creepHpBar = document.getElementById('creepHpBar'),
     base = {
         attackCreep: function() {
             if ((creepHp.innerHTML < 13) && ((getComputedStyle(creepHp).visibility) == 'hidden')) {
                 creepHp.style.visibility = "visible"
             }
+            currentCreepHp = creepHp.innerHTML
+            creepMaxHp = parseInt(creepMaxHp)
             creepHp.innerHTML --;
+            creepHpBar.style.width = currentCreepHp/creepMaxHp * 30 + "px"
+            console.log(creepHpBar.style.width)
             return creepHp.innerHTML
         }
     }
@@ -133,6 +138,7 @@ function baseAttack() {
         clearInterval(baseRetaliate);
         
         if (creepHp.innerHTML < 1) {
+            creepHpBar.style.width = 0 + "px"
             creepHp.innerHTML = "";
         }
         
