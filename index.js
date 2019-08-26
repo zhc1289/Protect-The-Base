@@ -76,6 +76,7 @@ function heroAttack(e) {
 }
 
 function creepMove() {
+    heroId = document.getElementById('hero'),
     creepBoxId = document.getElementById('creepBox'),
     baseId = document.getElementById('base'),
     baseY = parseInt(getComputedStyle(baseId).top),
@@ -92,8 +93,27 @@ function creepMove() {
             }
             return y
         },
+        horizontal: function() {
+            var heroX = parseInt(getComputedStyle(heroId).left);
+            var heroY = parseInt(getComputedStyle(heroId).top);
+            var creepX = parseInt(getComputedStyle(creepBoxId).left);
+            var creepY = parseInt(getComputedStyle(creepBoxId).top);
+            var dx = Math.abs(creepX - heroX)
+            
+            if (((creepY - heroY) == -40) && (dx < 9)) {
+                var decide = Math.random()
+                if (decide <= 0.5) {
+                    creepX -= 8
+                }
+                else {
+                    creepX += 8
+                }
+                return creepX
+            }
+        }
     };
     creepBoxId.style.top = (creep.vertical()) + "px";
+    creepBoxId.style.left = (creep.horizontal()) + "px";
 }
 
 function creepAttack() {
@@ -127,7 +147,6 @@ function baseAttack() {
             creepMaxHp = parseInt(creepMaxHp)
             creepHp.innerHTML --;
             creepHpBar.style.width = currentCreepHp/creepMaxHp * 30 + "px"
-            console.log(creepHpBar.style.width)
             return creepHp.innerHTML
         }
     }
