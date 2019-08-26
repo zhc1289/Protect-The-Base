@@ -2,6 +2,20 @@
     overflow: hidden;
 }
 
+#gold {
+    position: absolute;
+    font-size: 10px;
+    top: 10px;
+    left: 550px;
+}
+
+#goldAmount {
+    position: absolute;
+    font-size: 15px;
+    top: 3px;
+    left: 60px;
+}
+
 #hero {
     position: absolute;
     left: 420px;

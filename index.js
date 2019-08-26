@@ -42,6 +42,7 @@ function heroAttack(e) {
     heroId = document.getElementById('hero')
     creepId = document.getElementById('creep')
     creepHpBar = document.getElementById('creepHpBar')
+    goldAmount = document.getElementById('goldAmount')
     if (typeof(creepMaxHp) == 'undefined') {
         creepMaxHp = getCreepMaxHp()
     }
@@ -67,6 +68,7 @@ function heroAttack(e) {
             clearInterval(baseRetaliate);
             creepHp.style.visibility = "hidden"
             creepId.innerHTML = ""
+            goldAmount.innerHTML = parseInt(goldAmount.innerHTML) + 1
             console.log("LAST HIT!")
         }
         if (creepHp.innerHTML < 1) {
