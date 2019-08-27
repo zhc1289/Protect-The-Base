@@ -95,28 +95,10 @@ function creepMove() {
                 baseRetaliate = setInterval(baseAttack, 750)
             }
             return y
-        },
-        horizontal: function() {
-            var heroX = parseInt(getComputedStyle(heroId).left);
-            var heroY = parseInt(getComputedStyle(heroId).top);
-            var creepX = parseInt(getComputedStyle(creepBoxId).left);
-            var creepY = parseInt(getComputedStyle(creepBoxId).top);
-            var dx = Math.abs(creepX - heroX)
-            
-            if (((creepY - heroY) == -40) && (dx < 9)) {
-                var decide = Math.random()
-                if (decide <= 0.5) {
-                    creepX -= 8
-                }
-                else {
-                    creepX += 8
-                }
-                return creepX
-            }
         }
+
     };
     creepBoxId.style.top = (creep.vertical()) + "px";
-    creepBoxId.style.left = (creep.horizontal()) + "px";
 }
 
 function creepAttack() {
@@ -174,6 +156,29 @@ function getCreepMaxHp() {
     return creepMaxHp
 }
 
+function avoidCollision() {
+    var heroId = document.getElementById('hero');
+    var heroX = parseInt(getComputedStyle(heroId).left);
+    var heroY = parseInt(getComputedStyle(heroId).top);
+    var creepX = parseInt(getComputedStyle(creepBoxId).left);
+    var creepY = parseInt(getComputedStyle(creepBoxId).top);
+    var dx = Math.abs(creepX - heroX)
+
+    if (((creepY - heroY) == -40) && (dx < 9)) {
+        var decide = Math.random()
+        if (decide <= 0.5) {
+            creepX -= 8
+        }
+        else {
+            creepX += 8
+        }
+        creepBoxId.style.left = creepX + "px"
+    }
+}
+
+var creepBoxId = document.getElementById('creepBox')
+
 document.addEventListener('keydown', heroAttack);
 document.addEventListener('keydown', heroMove);
 creepAdvancing = setInterval(creepMove, 100);
+setInterval(avoidCollision, 100)
