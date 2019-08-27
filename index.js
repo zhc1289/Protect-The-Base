@@ -51,11 +51,7 @@ function heroAttack(e) {
     creepMaxHp = parseInt(creepMaxHp)
 
     dx = Math.abs(parseInt(getComputedStyle(creepBoxId).left) - parseInt(getComputedStyle(heroId).left))
-    dy = Math.abs(Math.abs(parseInt(getComputedStyle(creepBoxId).top) - parseInt(getComputedStyle(heroId).top)) - 38)
-    
-    if ((creepHp.innerHTML < 13) && ((getComputedStyle(creepHp).visibility) == 'hidden')) {
-        creepHp.style.visibility = "visible"
-    }   
+    dy = Math.abs(Math.abs(parseInt(getComputedStyle(creepBoxId).top) - parseInt(getComputedStyle(heroId).top)) - 38)   
 
     if (key == 32) {
         if ((dx < 9) && (dy <9)) {
@@ -68,18 +64,17 @@ function heroAttack(e) {
             clearInterval(creepSiege);
             clearInterval(baseRetaliate);
             creepHp.style.visibility = "hidden"
-            creepId.innerHTML = ""
+            creepId.style.visibility = "hidden"
             goldAmount.innerHTML = parseInt(goldAmount.innerHTML) + 1
             console.log("LAST HIT!")
         }
         if (creepHp.innerHTML < 1) {
-            creepHp.innerHTML = "";
+            creepHp.style.visibility = "hidden";
         }
     }
 }
 
 function creepMove() {
-    var heroId = document.getElementById('hero')
     var creepBoxId = document.getElementById('creepBox')
     var baseId = document.getElementById('base')
     var baseY = parseInt(getComputedStyle(baseId).top)
@@ -91,6 +86,7 @@ function creepMove() {
             } else {
                 baseId.innerHTML = "BASE UNDER ATTACK"
                 clearInterval(creepAdvancing)
+                clearInterval(collide)
                 creepSiege = setInterval(creepAttack, 750)
                 baseRetaliate = setInterval(baseAttack, 750)
             }
@@ -125,9 +121,6 @@ function baseAttack() {
     var creepHpBar = document.getElementById('creepHpBar')
     var base = {
         attackCreep: function() {
-            if ((creepHp.innerHTML < 13) && ((getComputedStyle(creepHp).visibility) == 'hidden')) {
-                creepHp.style.visibility = "visible"
-            }
             currentCreepHp = creepHp.innerHTML
             creepMaxHp = parseInt(creepMaxHp)
             creepHp.innerHTML --;
@@ -143,10 +136,10 @@ function baseAttack() {
         
         if (creepHp.innerHTML < 1) {
             creepHpBar.style.width = 0 + "px"
-            creepHp.innerHTML = "";
+            creepHp.style.visibility = "hidden";
         }
         
-        creepId.innerHTML = "";
+        creepId.style.visibility = "hidden";
         console.log("Missed Last Hit")
     }
 }
@@ -164,7 +157,7 @@ function avoidCollision() {
     var creepY = parseInt(getComputedStyle(creepBoxId).top);
     var dx = Math.abs(creepX - heroX)
 
-    if (((creepY - heroY) == -40) && (dx < 9)) {
+    if (((creepY - heroY == -38) || (creepY - heroY) == -40) && (dx < 7)) {
         var decide = Math.random()
         if (decide <= 0.5) {
             creepX -= 8
@@ -176,9 +169,29 @@ function avoidCollision() {
     }
 }
 
+function spawnCreep() {
+    var baseHealth = document.getElementById('health')
+    var creepId = document.getElementById('creep')
+    var creepHp = document.getElementById('creepHp')
+    var creepHpBar = document.getElementById('creepHpBar')
+    var creepBoxId = document.getElementById('creepBox')
+    
+    if ((baseHealth.innerHTML > 0) && (creepHp.innerHTML < 1)) {
+        creepBoxId.style.left = "300px"
+        creepBoxId.style.top = "0px"
+        creepHp.innerHTML = 13
+        creepHpBar.style.width = "30px"
+        creepHp.style.visibility = "visible"
+        creepId.style.visibility = "visible"
+        creepAdvancing = setInterval(creepMove, 100);
+        collide = setInterval(avoidCollision, 100)
+    }
+}
+
 var creepBoxId = document.getElementById('creepBox')
 
 document.addEventListener('keydown', heroAttack);
 document.addEventListener('keydown', heroMove);
 creepAdvancing = setInterval(creepMove, 100);
-setInterval(avoidCollision, 100)
+collide = setInterval(avoidCollision, 100)
+setInterval(spawnCreep, 1000)

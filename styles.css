@@ -30,6 +30,7 @@
 
 #creep {
     position: relative;
+    visibility: visible;
 }
 
 #creepHpBar {
@@ -46,7 +47,7 @@
 #creepHp {
     top: 18px;
     position: relative;
-    visibility: hidden;
+    visibility: visible;
 }
 
 #base {
