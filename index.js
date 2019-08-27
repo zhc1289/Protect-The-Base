@@ -39,10 +39,11 @@ function heroMove(e) {
 
 function heroAttack(e) {
     var key = e.keyCode
-    heroId = document.getElementById('hero')
-    creepId = document.getElementById('creep')
-    creepHpBar = document.getElementById('creepHpBar')
-    goldAmount = document.getElementById('goldAmount')
+    var heroId = document.getElementById('hero')
+    var creepId = document.getElementById('creep')
+    var creepBoxId = document.getElementById('creepBox')
+    var creepHpBar = document.getElementById('creepHpBar')
+    var goldAmount = document.getElementById('goldAmount')
     if (typeof(creepMaxHp) == 'undefined') {
         creepMaxHp = getCreepMaxHp()
     }
@@ -78,11 +79,11 @@ function heroAttack(e) {
 }
 
 function creepMove() {
-    heroId = document.getElementById('hero'),
-    creepBoxId = document.getElementById('creepBox'),
-    baseId = document.getElementById('base'),
-    baseY = parseInt(getComputedStyle(baseId).top),
-    creep = {
+    var heroId = document.getElementById('hero')
+    var creepBoxId = document.getElementById('creepBox')
+    var baseId = document.getElementById('base')
+    var baseY = parseInt(getComputedStyle(baseId).top)
+    var creep = {
         vertical: function() {
             var y = parseInt(getComputedStyle(creepBoxId).top);
             if (y < baseY - 57) {
@@ -119,9 +120,9 @@ function creepMove() {
 }
 
 function creepAttack() {
-    baseId = document.getElementById('base'),
-    baseHealth = document.getElementById('health'),
-    creep = {
+    var baseId = document.getElementById('base')
+    var baseHealth = document.getElementById('health')
+    var creep = {
         attackBase: function() {
             baseHealth.innerHTML --;
             return baseHealth.innerHTML
@@ -137,10 +138,10 @@ function creepAttack() {
 }
 
 function baseAttack() {
-    creepId = document.getElementById('creep'),
-    creepHp = document.getElementById('creepHp'),
-    creepHpBar = document.getElementById('creepHpBar'),
-    base = {
+    var creepId = document.getElementById('creep')
+    var creepHp = document.getElementById('creepHp')
+    var creepHpBar = document.getElementById('creepHpBar')
+    var base = {
         attackCreep: function() {
             if ((creepHp.innerHTML < 13) && ((getComputedStyle(creepHp).visibility) == 'hidden')) {
                 creepHp.style.visibility = "visible"
@@ -169,7 +170,7 @@ function baseAttack() {
 }
 
 function getCreepMaxHp() {
-    creepMaxHp = document.getElementById('creepHp').innerHTML
+    var creepMaxHp = document.getElementById('creepHp').innerHTML
     return creepMaxHp
 }
 
