@@ -29,14 +29,21 @@ function heroMove(e) {
             return heroY
         },
         horizontal: function() {
+            console.log(creepX - heroX)
             if (key == 37) {
                 if (heroX < 0) {
                     heroX = 0
                 }
+                else if ((creepX - heroX >= -9) && (creepX - heroX <= -3) && (creepY - heroY < -30) && (creepY - heroY > -46)) {
+                    return heroX
+                } 
                 heroX -= 4;
             } else if (key == 39) {
                 if (heroX > 555) {
                     heroX = 555
+                }
+                else if ((creepX - heroX >= 4) && (creepX - heroX <= 8) && (creepY - heroY < -30) && (creepY - heroY > -46)) {
+                    return heroX
                 }
                 heroX += 4;
             }
