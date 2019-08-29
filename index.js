@@ -29,7 +29,6 @@ function heroMove(e) {
             return heroY
         },
         horizontal: function() {
-            console.log(creepX - heroX)
             if (key == 37) {
                 if (heroX < 0) {
                     heroX = 0
@@ -71,7 +70,7 @@ function heroAttack(e) {
     dy = Math.abs(Math.abs(parseInt(getComputedStyle(creepBoxId).top) - parseInt(getComputedStyle(heroId).top)) - 38)   
 
     if (key == 32) {
-        if ((dx < 9) && (dy <9)) {
+        if ((dx < 9) && (dy <= 10)) {
             creepHp.innerHTML --
             creepHpBar.style.width = currentCreepHp/creepMaxHp * 30 + "px"
         }
