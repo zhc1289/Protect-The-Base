@@ -1,36 +1,46 @@
 function heroMove(e) {
-    var key = e.keyCode,
-    heroId = document.getElementById('hero'),
+    var key = e.keyCode;
+    var heroId = document.getElementById('hero');
+    var creepBoxId = document.getElementById('creepBox');
+    var heroY = parseInt(getComputedStyle(heroId).top);
+    var heroX = parseInt(getComputedStyle(heroId).left);
+    var creepY = parseInt(getComputedStyle(creepBoxId).top);
+    var creepX = parseInt(getComputedStyle(creepBoxId).left);
     hero = {
         vertical: function() {
-            var y = parseInt(getComputedStyle(heroId).top);
             if (key == 38) {
-                if (y < 0) {
-                    y = 0
+                if (heroY <= 0) {
+                    return 0
                 }
-                y -= 4;
+                else if ((creepY - heroY >= -46) && (creepY - heroY < -42) && (Math.abs(creepX - heroX) <= 7)) {
+                    return heroY
+                }
+                heroY -= 4;
+
             } else if (key == 40) {
-                if (y > 530) {
-                    y = 530
+                if (heroY >= 534) {
+                    return 534
                 }
-                y += 4;
+                else if ((creepY - heroY >= -30) && (creepY - heroY < -26) && (Math.abs(creepX - heroX) <= 7)) {
+                    return heroY
+                }
+                heroY += 4;
             }
-            return y
+            return heroY
         },
         horizontal: function() {
-            var x = parseInt(getComputedStyle(heroId).left);
             if (key == 37) {
-                if (x < 0) {
-                    x = 0
+                if (heroX < 0) {
+                    heroX = 0
                 }
-                x -= 4;
+                heroX -= 4;
             } else if (key == 39) {
-                if (x > 555) {
-                    x = 555
+                if (heroX > 555) {
+                    heroX = 555
                 }
-                x += 4;
+                heroX += 4;
             }
-            return x
+            return heroX
         }
     };
     heroId.style.top = (hero.vertical()) + "px";
