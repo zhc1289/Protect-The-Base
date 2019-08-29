@@ -206,7 +206,7 @@ function spawnCreep() {
 
 var creepBoxId = document.getElementById('creepBox')
 
-document.addEventListener('keydown', heroAttack);
+document.addEventListener('keyup', heroAttack);
 document.addEventListener('keydown', heroMove);
 creepAdvancing = setInterval(creepMove, 100);
 collide = setInterval(avoidCollision, 100)
