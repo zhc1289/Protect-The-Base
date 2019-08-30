@@ -200,14 +200,14 @@ function spawnCreep() {
         creepHp.style.visibility = "visible"
         creepId.style.visibility = "visible"
         creepAdvancing = setInterval(creepMove, 100);
-        collide = setInterval(avoidCollision, 100)
+        collide = setInterval(avoidCollision, 100);
     }
 }
 
-var creepBoxId = document.getElementById('creepBox')
+var creepBoxId = document.getElementById('creepBox');
 
 document.addEventListener('keyup', heroAttack);
 document.addEventListener('keydown', heroMove);
 creepAdvancing = setInterval(creepMove, 100);
-collide = setInterval(avoidCollision, 100)
-setInterval(spawnCreep, 1000)
+collide = setInterval(avoidCollision, 100);
+setInterval(spawnCreep, 1000);

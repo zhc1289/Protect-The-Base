@@ -50,6 +50,14 @@
     visibility: visible;
 }
 
+#wall {
+    position: absolute;
+    left: 0px;
+    top: 560px;
+    height: 80px;
+    width: 100vw;
+}
+
 #base {
     position: absolute;
     left: 430px;
