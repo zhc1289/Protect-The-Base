@@ -30,3 +30,12 @@ game.lineWidth = 3.5;
 game.strokeStyle = '#003300';
 game.stroke();
 
+// hero legs?
+game.beginPath();
+game.arc(canvas.width / 2, canvas.height / 2 + 18.5, 3, 0, 2 * Math.PI, false);
+game.fillStyle = 'blue';
+game.fill();
+game.lineWidth = 4;
+game.strokeStyle = '#003300';
+game.stroke();
+
