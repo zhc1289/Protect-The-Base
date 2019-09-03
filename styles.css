@@ -5,15 +5,21 @@
 #gold {
     position: absolute;
     font-size: 10px;
-    top: 10px;
+    top: 0px;
     left: 550px;
 }
 
+#drawGold {
+    position: relative;
+    top: 25px;
+}
+
 #goldAmount {
-    position: absolute;
+    position: relative;
+    color: gold;
     font-size: 15px;
-    top: 3px;
-    left: 60px;
+    top: -19px;
+    left: 33px;
 }
 
 #hero {
