@@ -50,6 +50,13 @@
     visibility: visible;
 }
 
+#drawHero {
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    z-index: -2;
+}
+
 #wall {
     position: absolute;
     left: 0px;
