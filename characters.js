@@ -35,9 +35,6 @@ heroArt.stroke();
 var canvas = document.getElementById('drawCreep');
 var creepArt = canvas.getContext('2d');
 
-creepArt.fillStyle = 'rgb(211, 211, 211)';
-creepArt.fillRect(0, 0, 24, 36);
-
 // creep body polygon
 creepArt.fillStyle = 'rgb(210, 184, 135)';
 creepArt.beginPath();
@@ -49,6 +46,28 @@ creepArt.lineTo(5, 31);
 creepArt.lineTo(4, 28);
 creepArt.closePath();
 creepArt.fill();
+
+// creep chicken legs
+creepArt.beginPath();
+creepArt.strokeStyle = 'rgb(210, 184, 135)';
+creepArt.moveTo(6, 31);
+creepArt.lineTo(6, 33);
+creepArt.stroke();
+
+creepArt.beginPath();
+creepArt.moveTo(6, 33);
+creepArt.lineTo(7, 36);
+creepArt.stroke();
+
+creepArt.beginPath();
+creepArt.moveTo(17, 31);
+creepArt.lineTo(17, 33);
+creepArt.stroke();
+
+creepArt.beginPath();
+creepArt.moveTo(17, 33);
+creepArt.lineTo(16, 36);
+creepArt.stroke();
 
 // creep head polygon
 creepArt.fillStyle = 'rgb(191, 0, 0)';
