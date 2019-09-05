@@ -106,12 +106,12 @@ creepArt.stroke();
 // creep face
 creepArt.beginPath();
 creepArt.arc(9, 15, 1.5, 0, 2 * Math.PI, false);
-creepArt.fillStyle = 'yellow';
+creepArt.fillStyle = 'rgb(255, 211, 0)';
 creepArt.fill();
 
 creepArt.beginPath();
 creepArt.arc(16, 15, 1.5, 0, 2 * Math.PI, false);
-creepArt.fillStyle = 'yellow';
+creepArt.fillStyle = 'rgb(255, 211, 0)';
 creepArt.fill();
 
 creepArt.beginPath();
