@@ -38,6 +38,18 @@ var creepArt = canvas.getContext('2d');
 creepArt.fillStyle = 'rgb(211, 211, 211)';
 creepArt.fillRect(0, 0, 24, 36);
 
+// creep body polygon
+creepArt.fillStyle = 'rgb(210, 184, 135)';
+creepArt.beginPath();
+creepArt.moveTo(7, 21);
+creepArt.lineTo(17, 21);
+creepArt.lineTo(20, 28);
+creepArt.lineTo(18, 31);
+creepArt.lineTo(5, 31);
+creepArt.lineTo(4, 28);
+creepArt.closePath();
+creepArt.fill();
+
 // creep head polygon
 creepArt.fillStyle = 'rgb(191, 0, 0)';
 creepArt.beginPath();
