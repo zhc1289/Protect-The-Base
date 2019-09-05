@@ -4,13 +4,6 @@ var heroArt = canvas.getContext('2d');
 heroArt.fillStyle = 'rgb(0, 250, 0)';
 heroArt.fillRect(0, 0, 35, 25);
 
-function drawLine(x1, y1, x2, y2){
-    heroArt.beginPath();
-    heroArt.moveTo(x1, y1);
-    heroArt.lineTo(x2, y2);
-    heroArt.stroke();
-};
-
 // hero head
 heroArt.beginPath();
 // (centerX, centerY, radius, startAngle in radians, endAngle in radians, counterclockwise or clockwise boolean)
@@ -77,4 +70,36 @@ creepArt.stroke();
 creepArt.beginPath();
 creepArt.moveTo(16, 3);
 creepArt.lineTo(14, 1);
+creepArt.stroke();
+
+// creep face
+creepArt.beginPath();
+creepArt.arc(9, 15, 1.5, 0, 2 * Math.PI, false);
+creepArt.fillStyle = 'yellow';
+creepArt.fill();
+
+creepArt.beginPath();
+creepArt.arc(16, 15, 1.5, 0, 2 * Math.PI, false);
+creepArt.fillStyle = 'yellow';
+creepArt.fill();
+
+creepArt.beginPath();
+creepArt.strokeStyle = 'black';
+creepArt.moveTo(9, 19);
+creepArt.lineTo(11, 26);
+creepArt.stroke();
+
+creepArt.beginPath();
+creepArt.moveTo(11, 26);
+creepArt.lineTo(12, 21);
+creepArt.stroke();
+
+creepArt.beginPath();
+creepArt.moveTo(12, 21);
+creepArt.lineTo(14, 26);
+creepArt.stroke();
+
+creepArt.beginPath();
+creepArt.moveTo(14, 26);
+creepArt.lineTo(16, 19);
 creepArt.stroke();
