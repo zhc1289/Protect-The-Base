@@ -28,10 +28,22 @@
     top: 400px;
 }
 
+#drawHero {
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}
+
 #creepBox {
     position: absolute;
     left: 300px;
     top: 0px;
+}
+
+#drawcreep {
+    position: absolute;
+    left: 200px;
+    top: 100px;
 }
 
 #creep {
@@ -54,13 +66,6 @@
     top: 18px;
     position: relative;
     visibility: visible;
-}
-
-#drawHero {
-    position: absolute;
-    left: 100px;
-    top: 100px;
-    z-index: -2;
 }
 
 #wall {
