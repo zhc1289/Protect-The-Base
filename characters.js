@@ -35,6 +35,13 @@ heroArt.stroke();
 var canvas = document.getElementById('drawCreep');
 var creepArt = canvas.getContext('2d');
 
+function drawLineCreep (x1, y1, x2, y2) {
+    creepArt.beginPath();
+    creepArt.moveTo(x1, y1);
+    creepArt.lineTo(x2, y2);
+    creepArt.stroke();
+};
+
 // creep body polygon
 creepArt.fillStyle = 'rgb(210, 184, 135)';
 creepArt.beginPath();
@@ -48,26 +55,11 @@ creepArt.closePath();
 creepArt.fill();
 
 // creep chicken legs
-creepArt.beginPath();
 creepArt.strokeStyle = 'rgb(210, 184, 135)';
-creepArt.moveTo(6, 31);
-creepArt.lineTo(6, 33);
-creepArt.stroke();
-
-creepArt.beginPath();
-creepArt.moveTo(6, 33);
-creepArt.lineTo(7, 36);
-creepArt.stroke();
-
-creepArt.beginPath();
-creepArt.moveTo(17, 31);
-creepArt.lineTo(17, 33);
-creepArt.stroke();
-
-creepArt.beginPath();
-creepArt.moveTo(17, 33);
-creepArt.lineTo(16, 36);
-creepArt.stroke();
+drawLineCreep(6, 31, 7, 36);
+drawLineCreep(6, 33, 7, 36);
+drawLineCreep(17, 31, 17, 33);
+drawLineCreep(17, 33, 16, 36);
 
 // creep head polygon
 creepArt.fillStyle = 'rgb(191, 0, 0)';
@@ -82,26 +74,11 @@ creepArt.closePath();
 creepArt.fill();
 
 //creep horns
-creepArt.beginPath();
-creepArt.moveTo(8, 14);
-creepArt.lineTo(8, 3);
 creepArt.strokeStyle = 'rgb(191, 0, 0)';
-creepArt.stroke();
-
-creepArt.beginPath();
-creepArt.moveTo(8, 3);
-creepArt.lineTo(10, 1);
-creepArt.stroke();
-
-creepArt.beginPath();
-creepArt.moveTo(16, 14);
-creepArt.lineTo(16, 3);
-creepArt.stroke();
-
-creepArt.beginPath();
-creepArt.moveTo(16, 3);
-creepArt.lineTo(14, 1);
-creepArt.stroke();
+drawLineCreep(8, 14, 8, 3);
+drawLineCreep(8, 3, 10, 1);
+drawLineCreep(16, 14, 16, 3);
+drawLineCreep(16, 3, 14, 1);
 
 // creep face
 creepArt.beginPath();
@@ -114,23 +91,8 @@ creepArt.arc(16, 15, 1.5, 0, 2 * Math.PI, false);
 creepArt.fillStyle = 'rgb(255, 211, 0)';
 creepArt.fill();
 
-creepArt.beginPath();
 creepArt.strokeStyle = 'black';
-creepArt.moveTo(9, 19);
-creepArt.lineTo(11, 26);
-creepArt.stroke();
-
-creepArt.beginPath();
-creepArt.moveTo(11, 26);
-creepArt.lineTo(12, 21);
-creepArt.stroke();
-
-creepArt.beginPath();
-creepArt.moveTo(12, 21);
-creepArt.lineTo(14, 26);
-creepArt.stroke();
-
-creepArt.beginPath();
-creepArt.moveTo(14, 26);
-creepArt.lineTo(16, 19);
-creepArt.stroke();
+drawLineCreep(9, 19, 11, 26);
+drawLineCreep(11, 26, 12, 21);
+drawLineCreep(12, 21, 14, 26);
+drawLineCreep(14, 26, 16, 19);
