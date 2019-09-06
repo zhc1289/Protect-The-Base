@@ -1,9 +1,6 @@
 var canvas = document.getElementById('drawHero');
 var heroArt = canvas.getContext('2d');
 
-heroArt.fillStyle = 'rgb(250, 250, 200)';
-heroArt.fillRect(0, 0, 25, 25);
-
 function drawLineHero (x1, y1, x2, y2) {
     heroArt.beginPath();
     heroArt.moveTo(x1, y1);
@@ -84,6 +81,11 @@ heroArt.lineTo(6, 25);
 heroArt.lineTo(4, 16);
 heroArt.closePath();
 heroArt.fill();
+
+// hero body cross
+heroArt.strokeStyle = "rgb(212, 175, 55)";
+drawLineHero(12, 15, 12, 24);
+drawLineHero(8, 18, 16, 18)
 
 var canvas = document.getElementById('drawCreep');
 var creepArt = canvas.getContext('2d');
