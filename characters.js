@@ -73,6 +73,18 @@ heroArt.strokeStyle = 'white';
 drawLineHero(10, 9, 10, 11);
 drawLineHero(14, 9, 14, 11);
 
+// hero body
+heroArt.fillStyle = 'rgb(152, 251, 152)';
+heroArt.beginPath();
+heroArt.moveTo(6, 14);
+heroArt.lineTo(18, 14);
+heroArt.lineTo(20, 16);
+heroArt.lineTo(20, 25);
+heroArt.lineTo(6, 25);
+heroArt.lineTo(4, 16);
+heroArt.closePath();
+heroArt.fill();
+
 var canvas = document.getElementById('drawCreep');
 var creepArt = canvas.getContext('2d');
 
