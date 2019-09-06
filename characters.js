@@ -1,36 +1,77 @@
 var canvas = document.getElementById('drawHero');
 var heroArt = canvas.getContext('2d');
 
-heroArt.fillStyle = 'rgb(0, 250, 0)';
-heroArt.fillRect(0, 0, 35, 25);
+heroArt.fillStyle = 'rgb(250, 250, 200)';
+heroArt.fillRect(0, 0, 25, 25);
 
-// hero head
-heroArt.beginPath();
-// (centerX, centerY, radius, startAngle in radians, endAngle in radians, counterclockwise or clockwise boolean)
-heroArt.arc(canvas.width / 2, canvas.height / 5, 3, 0, 2 * Math.PI, false);
-heroArt.fillStyle = 'red';
-heroArt.fill();
-heroArt.lineWidth = 3;
-heroArt.strokeStyle = '#003300';
-heroArt.stroke();
+function drawLineHero (x1, y1, x2, y2) {
+    heroArt.beginPath();
+    heroArt.moveTo(x1, y1);
+    heroArt.lineTo(x2, y2);
+    heroArt.stroke();
+};
 
-// hero body
+// hero head polygon
+heroArt.fillStyle = 'rgb(152, 251, 152)';
 heroArt.beginPath();
-heroArt.arc(canvas.width / 2, canvas.height / 2 + 1, 4, 0, 2 * Math.PI, false);
-heroArt.fillStyle = 'red';
+heroArt.moveTo(9, 1);
+heroArt.lineTo(15, 1);
+heroArt.lineTo(15, 1);
+heroArt.lineTo(18, 5);
+heroArt.lineTo(18, 14);
+heroArt.lineTo(17, 14);
+heroArt.lineTo(17, 15);
+heroArt.lineTo(7, 15);
+heroArt.lineTo(7, 14);
+heroArt.lineTo(6, 13);
+heroArt.lineTo(6, 5);
+heroArt.closePath();
 heroArt.fill();
-heroArt.lineWidth = 3.5;
-heroArt.strokeStyle = '#003300';
-heroArt.stroke();
 
-// hero legs?
+// hero face paint
+heroArt.fillStyle = '#228B22';
 heroArt.beginPath();
-heroArt.arc(canvas.width / 2, canvas.height / 2 + 9, 3, 0, 2 * Math.PI, false);
-heroArt.fillStyle = 'blue';
+heroArt.moveTo(7, 8);
+heroArt.lineTo(9, 6);
+heroArt.lineTo(10, 6);
+heroArt.lineTo(11, 7);
+heroArt.lineTo(11, 8);
+heroArt.lineTo(12, 9);
+heroArt.lineTo(13, 8);
+heroArt.lineTo(13, 6);
+heroArt.lineTo(15, 6);
+heroArt.lineTo(17, 8);
+heroArt.lineTo(17, 12);
+heroArt.lineTo(15, 14);
+heroArt.lineTo(14, 14);
+heroArt.lineTo(13, 15);
+heroArt.lineTo(11, 15);
+heroArt.lineTo(10, 14);
+heroArt.lineTo(9, 14);
+heroArt.lineTo(7, 12);
+heroArt.closePath();
 heroArt.fill();
-heroArt.lineWidth = 4;
-heroArt.strokeStyle = '#003300';
-heroArt.stroke();
+
+// hero eye area
+heroArt.fillStyle = 'black';
+heroArt.beginPath();
+heroArt.moveTo(8, 9);
+heroArt.lineTo(9, 8);
+heroArt.lineTo(10, 8);
+heroArt.lineTo(12, 10);
+heroArt.lineTo(14, 8);
+heroArt.lineTo(15, 11);
+heroArt.lineTo(15, 12);
+heroArt.lineTo(14, 13);
+heroArt.lineTo(10, 13);
+heroArt.lineTo(8, 11);
+heroArt.closePath();
+heroArt.fill();
+
+// hero eyes
+heroArt.strokeStyle = 'white';
+drawLineHero(10, 9, 10, 11);
+drawLineHero(14, 9, 14, 11);
 
 var canvas = document.getElementById('drawCreep');
 var creepArt = canvas.getContext('2d');
