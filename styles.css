@@ -22,16 +22,10 @@
     left: 33px;
 }
 
-#hero {
+#drawHero {
     position: absolute;
     left: 420px;
     top: 400px;
-}
-
-#drawHero {
-    position: absolute;
-    left: 100px;
-    top: 100px;
 }
 
 #creepBox {

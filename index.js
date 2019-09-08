@@ -1,6 +1,6 @@
 function heroMove(e) {
     var key = e.keyCode;
-    var heroId = document.getElementById('hero');
+    var heroId = document.getElementById('drawHero');
     var creepBoxId = document.getElementById('creepBox');
     var heroY = parseInt(getComputedStyle(heroId).top);
     var heroX = parseInt(getComputedStyle(heroId).left);
@@ -55,7 +55,7 @@ function heroMove(e) {
 
 function heroAttack(e) {
     var key = e.keyCode
-    var heroId = document.getElementById('hero')
+    var heroId = document.getElementById('drawHero')
     var creepId = document.getElementById('drawCreep')
     var creepBoxId = document.getElementById('creepBox')
     var creepHpBar = document.getElementById('creepHpBar')
@@ -166,7 +166,7 @@ function getCreepMaxHp() {
 }
 
 function avoidCollision() {
-    var heroId = document.getElementById('hero');
+    var heroId = document.getElementById('drawHero');
     var heroX = parseInt(getComputedStyle(heroId).left);
     var heroY = parseInt(getComputedStyle(heroId).top);
     var creepX = parseInt(getComputedStyle(creepBoxId).left);
