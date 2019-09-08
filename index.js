@@ -56,7 +56,7 @@ function heroMove(e) {
 function heroAttack(e) {
     var key = e.keyCode
     var heroId = document.getElementById('hero')
-    var creepId = document.getElementById('creep')
+    var creepId = document.getElementById('drawCreep')
     var creepBoxId = document.getElementById('creepBox')
     var creepHpBar = document.getElementById('creepHpBar')
     var goldAmount = document.getElementById('goldAmount')
@@ -97,7 +97,7 @@ function creepMove() {
     var creep = {
         vertical: function() {
             var y = parseInt(getComputedStyle(creepBoxId).top);
-            if (y < baseY - 57) {
+            if (y < baseY - 76) {
                 y += 4;
             } else {
                 baseId.innerHTML = "BASE UNDER ATTACK"
@@ -132,7 +132,7 @@ function creepAttack() {
 }
 
 function baseAttack() {
-    var creepId = document.getElementById('creep')
+    var creepId = document.getElementById('drawCreep')
     var creepHp = document.getElementById('creepHp')
     var creepHpBar = document.getElementById('creepHpBar')
     var base = {
@@ -187,7 +187,7 @@ function avoidCollision() {
 
 function spawnCreep() {
     var baseHealth = document.getElementById('health')
-    var creepId = document.getElementById('creep')
+    var creepId = document.getElementById('drawCreep')
     var creepHp = document.getElementById('creepHp')
     var creepHpBar = document.getElementById('creepHpBar')
     var creepBoxId = document.getElementById('creepBox')

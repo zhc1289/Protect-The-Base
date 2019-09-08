@@ -41,19 +41,13 @@
 }
 
 #drawcreep {
-    position: absolute;
-    left: 200px;
-    top: 100px;
-}
-
-#creep {
     position: relative;
     visibility: visible;
 }
 
 #creepHpBar {
     position: absolute;
-    left: -15px;
+    left: -3px;
     top: 25px;
     width: 30px;
     height: 4px;
