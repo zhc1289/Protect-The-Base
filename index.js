@@ -39,8 +39,8 @@ function heroMove(e) {
                 } 
                 heroX -= 4;
             } else if (key == 39) {
-                if (heroX > 555) {
-                    heroX = 555
+                if (heroX >= 536) {
+                    heroX = 537
                 }
                 else if ((creepX - heroX >= 12) && (creepX - heroX < 16) && (creepY - heroY < -32) && (creepY - heroY > -77)) {
                     return heroX
@@ -162,18 +162,19 @@ function avoidCollision() {
     var heroY = parseInt(getComputedStyle(heroId).top);
     var creepX = parseInt(getComputedStyle(creepBoxId).left);
     var creepY = parseInt(getComputedStyle(creepBoxId).top);
-    var dx = Math.abs(creepX - heroX)
+    var dx = creepX - heroX
 
-    if (((creepY - heroY > -88) && (creepY - heroY) < -79) && (dx < 16)) {
-        var decide = Math.random()
-        if (decide <= 0.5) {
-            creepX -= 20
+    if ((creepY - heroY <= -80) && (creepY - heroY >= -84)) {
+        if (dx == 0) {
+            creepX += 16
+        } else if ((dx > 0) && (dx <= 12)) {
+            creepX += 8
+        } else if ((dx < 0) && (dx >= -12)) {
+            creepX -= 8
         }
-        else {
-            creepX += 20
-        }
-        creepBoxId.style.left = creepX + "px"
-    }
+    } 
+
+    creepBoxId.style.left = creepX + "px"
 }
 
 function spawnCreep() {

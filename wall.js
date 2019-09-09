@@ -1,3 +1,12 @@
+var container = document.getElementById("background");
+var background = container.getContext("2d");
+var gradient = background.createLinearGradient(0, 0, 0, 400);
+
+gradient.addColorStop(0, "#E7401D");
+gradient.addColorStop(1, "#FFFFFF");
+background.fillStyle = gradient;
+background.fillRect(0, 0, 568, 570);
+
 var canvas = document.getElementById('wall');
 var wall = canvas.getContext('2d');
 

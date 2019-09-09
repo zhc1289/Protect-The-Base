@@ -2,11 +2,23 @@
     overflow: hidden;
 }
 
+#title {
+    font-size: 18px;
+    font-family: monospace;
+}
+
+#background {
+    position: absolute;
+    left: -8px;
+    top: -8px;
+    z-index: -99;
+}
+
 #gold {
     position: absolute;
     font-size: 10px;
-    top: 0px;
-    left: 550px;
+    top: -16px;
+    left: 500px;
 }
 
 #drawGold {
