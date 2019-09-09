@@ -164,13 +164,13 @@ function avoidCollision() {
     var creepY = parseInt(getComputedStyle(creepBoxId).top);
     var dx = Math.abs(creepX - heroX)
 
-    if (((creepY - heroY == -38) || (creepY - heroY) == -40) && (dx < 7)) {
+    if (((creepY - heroY > -88) && (creepY - heroY) < -79) && (dx < 16)) {
         var decide = Math.random()
         if (decide <= 0.5) {
-            creepX -= 8
+            creepX -= 20
         }
         else {
-            creepX += 8
+            creepX += 20
         }
         creepBoxId.style.left = creepX + "px"
     }
@@ -184,6 +184,8 @@ function spawnCreep() {
     var creepBoxId = document.getElementById('creepBox')
     
     if ((baseHealth.innerHTML > 0) && (creepHp.innerHTML < 1)) {
+        clearInterval(creepSiege);
+        clearInterval(baseRetaliate);
         creepBoxId.style.left = "300px"
         creepBoxId.style.top = "0px"
         creepHp.innerHTML = 13
