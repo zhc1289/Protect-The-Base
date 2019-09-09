@@ -6,13 +6,14 @@ function heroMove(e) {
     var heroX = parseInt(getComputedStyle(heroId).left);
     var creepY = parseInt(getComputedStyle(creepBoxId).top);
     var creepX = parseInt(getComputedStyle(creepBoxId).left);
+
     hero = {
         vertical: function() {
             if (key == 38) {
                 if (heroY <= 0) {
                     return 0
                 }
-                else if ((creepY - heroY >= -46) && (creepY - heroY < -42) && (Math.abs(creepX - heroX) <= 7)) {
+                else if ((creepY - heroY <= -80) && (creepY - heroY > -84) && (Math.abs(creepX - heroX) < 11)) {
                     return heroY
                 }
                 heroY -= 4;
@@ -21,7 +22,7 @@ function heroMove(e) {
                 if (heroY >= 534) {
                     return 534
                 }
-                else if ((creepY - heroY >= -30) && (creepY - heroY < -26) && (Math.abs(creepX - heroX) <= 7)) {
+                else if ((creepY - heroY >= -34) && (creepY - heroY < -30) && (Math.abs(creepX - heroX) < 12)) {
                     return heroY
                 }
                 heroY += 4;
@@ -33,7 +34,7 @@ function heroMove(e) {
                 if (heroX < 0) {
                     heroX = 0
                 }
-                else if ((creepX - heroX >= -9) && (creepX - heroX <= -3) && (creepY - heroY < -30) && (creepY - heroY > -46)) {
+                else if ((creepX - heroX > -16) && (creepX - heroX <= -12) && (creepY - heroY < -32) && (creepY - heroY > -77)) {
                     return heroX
                 } 
                 heroX -= 4;
@@ -41,7 +42,7 @@ function heroMove(e) {
                 if (heroX > 555) {
                     heroX = 555
                 }
-                else if ((creepX - heroX >= 4) && (creepX - heroX <= 8) && (creepY - heroY < -30) && (creepY - heroY > -46)) {
+                else if ((creepX - heroX >= 12) && (creepX - heroX < 16) && (creepY - heroY < -32) && (creepY - heroY > -77)) {
                     return heroX
                 }
                 heroX += 4;
@@ -68,10 +69,9 @@ function heroAttack(e) {
 
     dx = Math.abs(parseInt(getComputedStyle(creepBoxId).left) - parseInt(getComputedStyle(heroId).left))
     dy = parseInt(getComputedStyle(creepBoxId).top) - parseInt(getComputedStyle(heroId).top) - 38   
-    console.log(`dx: ${dx}, dy: ${dy}`)
-    
+
     if (key == 32) {
-        if ((dx <= 12) && (dy <= -72) && (dy >= -108)) {
+        if ((dx <= 12) && (dy <= -70) && (dy > -122)) {
             creepHp.innerHTML --
             creepHpBar.style.width = currentCreepHp/creepMaxHp * 30 + "px"
         }
