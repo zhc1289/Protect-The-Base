@@ -79,13 +79,8 @@ function heroAttack(e) {
             clearInterval(creepAdvancing);
             clearInterval(creepSiege);
             clearInterval(baseRetaliate);
-            creepHp.style.visibility = "hidden"
             creepId.style.visibility = "hidden"
             goldAmount.innerHTML = parseInt(goldAmount.innerHTML) + 1
-            console.log("LAST HIT!")
-        }
-        if (creepHp.innerHTML < 1) {
-            creepHp.style.visibility = "hidden";
         }
     }
 }
@@ -103,8 +98,8 @@ function creepMove() {
                 baseId.innerHTML = "BASE UNDER ATTACK"
                 clearInterval(creepAdvancing)
                 clearInterval(collide)
-                creepSiege = setInterval(creepAttack, 750)
-                baseRetaliate = setInterval(baseAttack, 750)
+                creepSiege = setInterval(creepAttack, 1000)
+                baseRetaliate = setInterval(baseAttack, 1000)
             }
             return y
         }
@@ -141,23 +136,18 @@ function baseAttack() {
             creepMaxHp = parseInt(creepMaxHp)
             creepHp.innerHTML --;
             creepHpBar.style.width = currentCreepHp/creepMaxHp * 30 + "px"
+
+            if (creepHp.innerHTML < 1) {
+                clearInterval(creepSiege);
+                clearInterval(baseRetaliate);
+                
+                creepId.style.visibility = "hidden";
+            }
+            
             return creepHp.innerHTML
         }
     }
     creepHp.innerHTML = base.attackCreep()
-    if (creepHp.innerHTML == 1) {
-        creepHp.innerHTML --
-        clearInterval(creepSiege);
-        clearInterval(baseRetaliate);
-        
-        if (creepHp.innerHTML < 1) {
-            creepHpBar.style.width = 0 + "px"
-            creepHp.style.visibility = "hidden";
-        }
-        
-        creepId.style.visibility = "hidden";
-        console.log("Missed Last Hit")
-    }
 }
 
 function getCreepMaxHp() {
@@ -197,7 +187,6 @@ function spawnCreep() {
         creepBoxId.style.top = "0px"
         creepHp.innerHTML = 13
         creepHpBar.style.width = "30px"
-        creepHp.style.visibility = "visible"
         creepId.style.visibility = "visible"
         creepAdvancing = setInterval(creepMove, 100);
         collide = setInterval(avoidCollision, 100);
