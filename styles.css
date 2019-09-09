@@ -48,6 +48,7 @@
     border-color: white;
     border-width: 1px;
     background-color: green;
+    z-index: 3;
 }
 
 #creepHp {

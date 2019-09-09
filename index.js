@@ -67,10 +67,11 @@ function heroAttack(e) {
     creepMaxHp = parseInt(creepMaxHp)
 
     dx = Math.abs(parseInt(getComputedStyle(creepBoxId).left) - parseInt(getComputedStyle(heroId).left))
-    dy = Math.abs(Math.abs(parseInt(getComputedStyle(creepBoxId).top) - parseInt(getComputedStyle(heroId).top)) - 38)   
-
+    dy = parseInt(getComputedStyle(creepBoxId).top) - parseInt(getComputedStyle(heroId).top) - 38   
+    console.log(`dx: ${dx}, dy: ${dy}`)
+    
     if (key == 32) {
-        if ((dx < 9) && (dy <= 10)) {
+        if ((dx <= 12) && (dy <= -72) && (dy >= -108)) {
             creepHp.innerHTML --
             creepHpBar.style.width = currentCreepHp/creepMaxHp * 30 + "px"
         }
@@ -143,7 +144,7 @@ function baseAttack() {
                 
                 creepId.style.visibility = "hidden";
             }
-            
+
             return creepHp.innerHTML
         }
     }
