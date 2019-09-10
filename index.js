@@ -96,7 +96,6 @@ function creepMove() {
             if (y < baseY - 76) {
                 y += 4;
             } else {
-                baseId.innerHTML = "BASE UNDER ATTACK"
                 clearInterval(creepAdvancing)
                 clearInterval(collide)
                 creepSiege = setInterval(creepAttack, 1000)
@@ -110,7 +109,7 @@ function creepMove() {
 }
 
 function creepAttack() {
-    var baseId = document.getElementById('base')
+    var baseStatus = document.getElementById('baseStatus')
     var baseHealth = document.getElementById('health')
     var creep = {
         attackBase: function() {
@@ -120,10 +119,10 @@ function creepAttack() {
     }
     baseHealth.innerHTML = creep.attackBase()
     if (baseHealth.innerHTML < 1) {
+        baseStatus.innerHTML = "Game Over"
+        baseHealth.innerHTML = ""
         clearInterval(creepSiege);
         clearInterval(baseRetaliate);
-        baseId.innerHTML = "BASE DESTROYED";
-        baseHealth.innerHTML = "GAME OVER";
     }
 }
 

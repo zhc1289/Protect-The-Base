@@ -81,8 +81,16 @@
     top: 550px;
 }
 
+#baseStatus {
+    position: absolute;
+    font-family: monospace;
+    left: 8px;
+    top: 18px;
+}
+
 #health {
     position: absolute;
-    left: 450px;
-    top: 570px;
+    font-family: monospace;
+    left: 100px;
+    top: 18px;
 }
