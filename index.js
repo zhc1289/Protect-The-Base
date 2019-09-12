@@ -114,9 +114,12 @@ function creepMove() {
 function creepAttack() {
     var baseStatus = document.getElementById('baseStatus');
     var baseHealth = document.getElementById('health');
+    var creepY = parseInt(getComputedStyle(creepBoxId).top);
     var creep = {
         attackBase: function() {
-            baseHealth.innerHTML --;
+            if (creepY == 476) {
+                baseHealth.innerHTML --;
+            }
             return baseHealth.innerHTML
         }
     }
@@ -124,6 +127,7 @@ function creepAttack() {
     if (baseHealth.innerHTML < 1) {
         baseStatus.innerHTML = "Game Over"
         baseHealth.innerHTML = ""
+        document.removeEventListener('keydown', backTrack);
         clearInterval(creepSiege);
         clearInterval(baseRetaliate);
     }
@@ -137,7 +141,9 @@ function baseAttack() {
         attackCreep: function() {
             currentCreepHp = creepHp.innerHTML;
             creepMaxHp = parseInt(creepMaxHp);
-            creepHp.innerHTML --;
+            if (parseInt(getComputedStyle(creepBoxId).top) == 476) {
+                creepHp.innerHTML --;
+            }
             creepHpBar.style.width = currentCreepHp/creepMaxHp * 30 + "px";
 
             if (creepHp.innerHTML < 1) {
@@ -185,7 +191,6 @@ function spawnCreep() {
     var creepHp = document.getElementById('creepHp');
     var creepHpBar = document.getElementById('creepHpBar');
     var creepBoxId = document.getElementById('creepBox');
-    console.log(creepBoxId.style.top)
     
     if ((baseHealth.innerHTML > 0)  && (creepHp.innerHTML < 1)) {
         if (parseInt(creepBoxId.style.top) < 476) { 
@@ -209,17 +214,26 @@ function spawnCreep() {
     }
 }
 
-function updateState() {
-    var baseHealth = document.getElementById('health');
-    var creepHp = document.getElementById('creepHp');
-    var creepBoxId = document.getElementById('creepBox');
-    var heroId = document.getElementById('drawHero');
+function backTrack(e) {
+    var key = e.keyCode;
+    var creepY = parseInt(getComputedStyle(creepBoxId).top);
+    
+    if ((key == 8) && (creepY > 39)) {
+        if (creepY == 476) {
+            clearInterval(baseRetaliate);
+            clearInterval(creepSiege);
+            clearInterval(creepAdvancing);
+            creepAdvancing = setInterval(creepMove, 100);
+        }
+        creepBoxId.style.top = creepY - 40 + "px";
+    }
 }
 
 var creepBoxId = document.getElementById('creepBox');
 
 document.addEventListener('keyup', heroAttack);
 document.addEventListener('keydown', heroMove);
+document.addEventListener('keydown', backTrack);
 creepAdvancing = setInterval(creepMove, 100);
 collide = setInterval(avoidCollision, 100);
 setInterval(spawnCreep, 1000);
