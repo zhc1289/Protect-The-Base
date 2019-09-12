@@ -14,6 +14,14 @@
     z-index: -99;
 }
 
+#backtrack {    
+    position: absolute;
+    font-family: monospace;
+    left: 8px;
+    top: 32px;
+    visibility: hidden;
+}
+
 #gold {
     position: absolute;
     font-size: 10px;

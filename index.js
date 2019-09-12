@@ -125,8 +125,10 @@ function creepAttack() {
     }
     baseHealth.innerHTML = creep.attackBase()
     if (baseHealth.innerHTML < 1) {
-        baseStatus.innerHTML = "Game Over"
-        baseHealth.innerHTML = ""
+        baseStatus.innerHTML = "Game Over";
+        baseHealth.innerHTML = "";
+        document.removeEventListener('keyup', heroAttack);
+        document.removeEventListener('keydown', heroMove);
         document.removeEventListener('keydown', backTrack);
         clearInterval(creepSiege);
         clearInterval(baseRetaliate);
@@ -214,11 +216,24 @@ function spawnCreep() {
     }
 }
 
+function cooldown() {
+    var backtrack = document.getElementById('backtrack');
+    if (backtrack.innerHTML < 10) {
+        backtrack.innerHTML++;
+    }
+
+    if (backtrack.innerHTML == 10) {
+        backtrack.innerHTML = 'backtrack ready';
+        backtrack.style.visibility = 'visible';
+    }
+}
+
 function backTrack(e) {
     var key = e.keyCode;
     var creepY = parseInt(getComputedStyle(creepBoxId).top);
-    
-    if ((key == 8) && (creepY > 39)) {
+    var backtrack = document.getElementById('backtrack');
+
+    if ((key == 8) && (creepY > 39) && (backtrack.innerHTML == 'backtrack ready')) {
         if (creepY == 476) {
             clearInterval(baseRetaliate);
             clearInterval(creepSiege);
@@ -226,6 +241,8 @@ function backTrack(e) {
             creepAdvancing = setInterval(creepMove, 100);
         }
         creepBoxId.style.top = creepY - 40 + "px";
+        backtrack.style.visibility = 'hidden'
+        backtrack.innerHTML = 0
     }
 }
 
@@ -237,3 +254,4 @@ document.addEventListener('keydown', backTrack);
 creepAdvancing = setInterval(creepMove, 100);
 collide = setInterval(avoidCollision, 100);
 setInterval(spawnCreep, 1000);
+setInterval(cooldown, 1000);
