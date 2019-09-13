@@ -61,6 +61,8 @@ function heroAttack(e) {
     var creepBoxId = document.getElementById('creepBox');
     var creepHpBar = document.getElementById('creepHpBar');
     var goldAmount = document.getElementById('goldAmount');
+    var hit = document.getElementById('hit');
+
     if (typeof(creepMaxHp) == 'undefined') {
         creepMaxHp = getCreepMaxHp();
     }
@@ -68,10 +70,21 @@ function heroAttack(e) {
     creepMaxHp = parseInt(creepMaxHp);
 
     dx = Math.abs(parseInt(getComputedStyle(creepBoxId).left) - parseInt(getComputedStyle(heroId).left));
-    dy = parseInt(getComputedStyle(creepBoxId).top) - parseInt(getComputedStyle(heroId).top) - 38;   
+    dy = parseInt(getComputedStyle(creepBoxId).top) - parseInt(getComputedStyle(heroId).top) - 38;
+    hitPhrases = ['SMACK!', 'WHACK!', 'THWACK!', 'BOOP!', 'POW!']
 
+    function randomHitPhrase() {
+        var sound = Math.floor(Math.random() * 5);
+        return sound
+    }
+    
     if (key == 32) {
         if ((dx <= 12) && (dy <= -70) && (dy > -122)) {
+            hit.innerHTML = hitPhrases[randomHitPhrase()];
+            hit.style.visibility = 'visible';
+            setTimeout(function() {
+                hit.style.visibility = 'hidden'}, 250
+            );
             creepHp.innerHTML --;
             creepHpBar.style.width = currentCreepHp/creepMaxHp * 30 + "px";
         }

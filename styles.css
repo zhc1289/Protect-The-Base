@@ -71,6 +71,16 @@
     z-index: 3;
 }
 
+#hit {
+    color: orangered;
+    position: absolute;
+    font-size: 10px;
+    font-family: monospace;
+    left: -3px;
+    top: 16px;
+    visibility: hidden;
+}
+
 #creepHp {
     top: 18px;
     position: relative;
